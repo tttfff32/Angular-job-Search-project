@@ -1,0 +1,7 @@
+<span>{{user.userName}}</span> 
+
+<a [routerLink]="'main'">דף הבית</a> |
+<a (click)="filter()" >{{user.profession}}</a> |
+<!-- <button >{{user.profession}}</button> -->
+
+<app-login *ngIf="!userInLocalStorage"></app-login>

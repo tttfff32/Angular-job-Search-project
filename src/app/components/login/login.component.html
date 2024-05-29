@@ -1,0 +1,23 @@
+<form [formGroup]="form" *ngIf="!userInLocalStorage" class="form">
+    <div>
+        <label class="label">userName</label>
+        <input type="text" formControlName="username" class="input">
+    </div>
+    <div>
+        <label class="label">password</label>
+        <input type="password" formControlName="password" class="input">
+    </div>
+    <div>
+        <label class="label">profession</label>
+        <select formControlName="profession" class="input">
+            <option value="Software_Development">Software Development</option>
+            <option value="Accounting">Accounting</option>
+            <option value="Architecture">Architecture</option>
+            <option value="Social_work">Social work</option>
+            <option value="Graphics">Graphics</option>
+            <option value="Secretariat">Secretariat</option>
+        </select>
+    </div>
+    <button type="submit" (click)="signUp()" [disabled]="!form.valid" class="button">login</button>
+</form>
+<app-job-list *ngIf="userInLocalStorage"  ></app-job-list>
