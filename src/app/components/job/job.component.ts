@@ -15,8 +15,8 @@ constructor(private jobSRV:JobService, private router:Router){}
   numOfCV:number=0;
   addCV(){
     this.jobSRV.addCV();
-    const numOfCVs = this.jobSRV.getNumOfCVs();
-    this.router.navigate(['/main'], { queryParams: { numOfCVs: numOfCVs } });
+    // const numOfCVs = this.jobSRV.getNumOfCVs();
+    // this.router.navigate(['/main'], { queryParams: { numOfCVs: numOfCVs } });
 
   }
 }

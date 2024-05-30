@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { Job, profession } from '../../models/job';
 import { JobService } from '../../services/job.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -19,19 +20,21 @@ export class MainComponent implements OnInit {
   userInLocalStorage: boolean = this.userSRV.userInLocalStorage
   filterData: any = { area: "", fromHome: false, hours: 0, id: 0, jobName: "", profession: profession.Accounting, requirements: "" };
 
-  numOfCV: number =0;
-
+  // numOfCV: number =0;
+  numOfCV$: Observable<number> | undefined;
+  
   ngOnInit(): void {
     this.str = localStorage.getItem('myUser') || null;
     if (this.str != null) {
       this.user = JSON.parse(this.str);
       this.userSRV.userInLocalStorage = true;
     }
-    this.router.queryParams.subscribe(params => {
-      this.numOfCV = +params['numOfCVs'] || 0;
-    });
+    this.numOfCV$ = this.jobSRV.getNumOfCVs();
+    // this.router.queryParams.subscribe(params => {
+    //   this.numOfCV = +params['numOfCVs'] || 0;
+    // });
   }
-  
+
 filter(){
   this.jobSRV.filterByProfession(this.user.profession).subscribe(res => this.jobSRV.updateJobList(res));
 }
