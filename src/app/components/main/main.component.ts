@@ -3,7 +3,7 @@ import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { Job, profession } from '../../models/job';
 import { JobService } from '../../services/job.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -13,14 +13,13 @@ import { Router } from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private userSRV: UserService, private jobSRV: JobService, private router: Router) { }
+  constructor(private userSRV: UserService, private jobSRV: JobService, private router: ActivatedRoute) { }
   str: string | null = "" || null;
   user: User = { userName: "", password: "", id: 0, profession: profession.Accounting };
   userInLocalStorage: boolean = this.userSRV.userInLocalStorage
   filterData: any = { area: "", fromHome: false, hours: 0, id: 0, jobName: "", profession: profession.Accounting, requirements: "" };
 
-  @Output()
-  filterChanged: EventEmitter<any> = new EventEmitter<any>();
+  numOfCV: number =0;
 
   ngOnInit(): void {
     this.str = localStorage.getItem('myUser') || null;
@@ -28,11 +27,15 @@ export class MainComponent implements OnInit {
       this.user = JSON.parse(this.str);
       this.userSRV.userInLocalStorage = true;
     }
+    this.router.queryParams.subscribe(params => {
+      this.numOfCV = +params['numOfCVs'] || 0;
+    });
   }
+  
+filter(){
+  this.jobSRV.filterByProfession(this.user.profession).subscribe(res => this.jobSRV.updateJobList(res));
+}
 
-  ListOfJobs:Job[]=this.jobSRV.ListOfJobs;
-  filter(){
-    this.jobSRV.filterByProfession(this.user.profession).subscribe(res => this.jobSRV.ListOfJobs = res);
-  }
 
+  
 }

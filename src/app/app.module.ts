@@ -10,6 +10,8 @@ import { LoginComponent } from './components/login/login.component';
 import { JobComponent } from './components/job/job.component';
 import { JobListComponent } from './components/job-list/job-list.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms'
+import { Routes } from '@angular/router';
+
 @NgModule({
   declarations: [
     AppComponent,
