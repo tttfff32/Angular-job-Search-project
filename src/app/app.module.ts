@@ -13,6 +13,7 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms'
 import { Routes } from '@angular/router';
 import { FilterComponent } from './components/filter/filter.component';
 import { FavoriteJobsComponent } from './components/favorite-jobs/favorite-jobs.component';
+import { MyJobDirectiveDirective } from './my-job-directive.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FavoriteJobsComponent } from './components/favorite-jobs/favorite-jobs.
     JobComponent,
     JobListComponent,
     FilterComponent,
-    FavoriteJobsComponent
+    FavoriteJobsComponent,
+    MyJobDirectiveDirective
   ],
   imports: [
     BrowserModule,

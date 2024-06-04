@@ -1,0 +1,33 @@
+.job{
+    border: 1.5px rgb(0, 0, 0) solid;
+    border-radius: 25px;
+    width: 100%;
+    height: 100%;
+    padding: 4%;
+
+}
+.job>p,.job>h2{
+    color: #6a7d87;
+    font-family: monospace;
+    font-size: 18px;
+    margin: 3%;
+}
+
+.job>span{
+    color: #009af3;
+    font-family: monospace;
+    font-size: 20px;
+}
+
+.job>button{
+    color: #009af3;
+    font-family: monospace;
+    font-size: 20px;
+    background-color: white;
+    border: #009af3 solid 0.2px;
+    border-radius: 20px;
+    padding: 10px;
+    width: 90%;
+    margin: 2%;
+    cursor: pointer;
+}

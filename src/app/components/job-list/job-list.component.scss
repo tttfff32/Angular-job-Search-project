@@ -1,11 +1,8 @@
 /* Base styles */
-.job-list {
+.JobList {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .job-list .job {
-    flex: 1 0 30%;
-  }
-  
+    justify-content: flex-start;
+    margin-bottom: 3%;
+    flex-direction: row;
+}

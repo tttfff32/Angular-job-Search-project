@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
-  styleUrl: './filter.component.scss'
+  styleUrl: '../../app.component.scss'
 })
 export class FilterComponent  implements OnInit {
   form:FormGroup;

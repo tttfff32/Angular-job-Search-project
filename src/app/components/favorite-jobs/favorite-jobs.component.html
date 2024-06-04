@@ -1,7 +1,9 @@
-<div *ngFor="let j of FavoriteJobList">
-    <p>{{j.jobName}}</p>
-    <p>{{j.profession}}</p>
-    <p>{{j.area}}</p>
-    <p>{{j.hours}}</p>
-    <p>{{j.fromHome}}</p>
+<div *ngFor="let j of FavoriteJobList" class="favorite-list ">
+    <h1>👜</h1>
+    <p class="favorite-item">name:{{j.jobName}}</p>
+    <p class="favorite-item">profession:{{j.profession}}</p>
+    <p class="favorite-item">area:{{j.area}}</p>
+    <p class="favorite-item">hours:{{j.hours}}</p>
+    <p class="favorite-item">fromHome:{{j.fromHome}}</p>
+    <p class="favorite-item">requirements:{{j.requirements}}</p>
 </div>

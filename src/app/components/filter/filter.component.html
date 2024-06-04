@@ -1,5 +1,5 @@
 
-<form [formGroup]="form">
+<form [formGroup]="form" class="filter-form" >
     <label for="profession">Profession:</label>
     <select formControlName="profession" name="profession">
         <option value="Software_Development">Software Development</option>
@@ -14,8 +14,8 @@
     <label for="area">Area:</label>
     <input type="text" formControlName="area" name="area">
   
-    <button (click)="filterJobs()">Filter</button>
-    <button (click)="resetFilter()">Reset</button>
+    <button (click)="filterJobs()" class="filter-button">Filter</button>
+    <button (click)="resetFilter()" class="filter-button">Reset</button>
 
   </form>
   

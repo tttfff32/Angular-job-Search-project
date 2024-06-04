@@ -51,8 +51,8 @@ export class JobService {
     this.setLocalStorageItem('numOfCV', currentNumOfCV.toString());
   }
 
- addJobToFavorite(newjob:Job):Observable<any> | null{
-    return this.http.post<any>('https://localhost:7071/api/Job/AddJob', newjob);
+ addJobToFavorite(newjob:Job): Observable<any> {
+    return this.http.post('https://localhost:7071/api/Job/AddJob', newjob);
  }
 
   // getNumOfCVs(): number {

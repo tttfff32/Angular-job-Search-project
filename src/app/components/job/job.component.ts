@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-job',
   templateUrl: './job.component.html',
-  styleUrl: './job.component.scss'
+  styleUrl: '../../app.component.scss'
 })
 export class JobComponent {
 constructor(private jobSRV:JobService, private router:Router){}
@@ -19,7 +19,15 @@ constructor(private jobSRV:JobService, private router:Router){}
   addCV(){
     this.jobSRV.addCV();
     this.newJob={area:this.job.area,fromHome:this.job.fromHome,hours:this.job.hours,id:this.job.id,jobName:this.job.jobName,profession:this.job.profession,requirements:this.job.requirements};
-  this.jobSRV.addJobToFavorite(this.newJob);
+    this.jobSRV.addJobToFavorite(this.newJob).subscribe
+    (
+      response => {
+        console.log(response); // פרטי התגובה מהשרת
+      },
+      error => {
+        console.error(error); // השגיאה המתקבלת מהשרת
+      }
+    );
   }
 
   showDetails(){

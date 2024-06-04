@@ -1,9 +1,31 @@
-<h1>job</h1>
-<h1>{{job.jobName}}</h1>
-<p>{{job.profession}}</p>
-<p>{{job.hours}}</p>
-<p>{{job.fromHome}}</p>
-<p>{{job.area}}</p>
-<p *ngIf="isShowDetail"> requirements: {{job.requirements}}</p>
-<button  (click)="showDetails()">{{btn}}</button>
-<button  (click)="addCV()" >Apply CV</button>
+<div class="job-item" >
+    <div class="job-info" appMyJobDirective>
+        <span class="job-label">🔰Job Name:</span>
+        <h2 class="job-value">{{job.jobName}}</h2>
+    </div>
+    <div class="job-info" >
+        <span class="job-label">🎓Job Profession:</span>
+        <p class="job-value">{{job.profession}}</p>
+    </div>
+    <div class="job-info">
+        <span class="job-label">🕓Hours in Week:</span>
+        <p class="job-value">{{job.hours}}</p>
+    </div>
+    <div class="job-info">
+        <span class="job-label">🏡From Home?</span>
+        <p class="job-value">{{job.fromHome}}</p>
+    </div>
+    <div class="job-info">
+        <span class="job-label">🚙Where?</span>
+        <p class="job-value">{{job.area}}</p>
+    </div>
+     <div class="job-info">
+        <span class="job-label" *ngIf="isShowDetail"> 📃requirements:</span>
+        <p class="job-value" *ngIf="isShowDetail"> {{job.requirements}}</p>
+    </div>
+    <div class="job-buttons">
+    <button (click)="showDetails()">{{btn}}</button><br>
+    <button (click)="addCV()">Apply CV</button>
+    </div>
+</div>
+

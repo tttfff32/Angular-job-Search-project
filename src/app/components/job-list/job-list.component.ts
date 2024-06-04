@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-job-list',
   templateUrl: './job-list.component.html',
-  styleUrl: './job-list.component.scss'
+  styleUrl: '../../app.component.scss'
 })
 export class JobListComponent implements OnInit {
 

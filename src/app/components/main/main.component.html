@@ -1,16 +1,12 @@
 <header>
-    <span>{{user.userName}}</span> |
+    <span>Hellow {{user.userName}} 🤗</span> |
     <a [routerLink]="'main/'">דף הבית</a> |
-    <a (click)="filter()">{{user.profession}}</a> |
-    <span>{{ numOfCV$ | async}}</span>|
-    <a [routerLink]="'FavoriteJobs'">my Jobs</a>
+
+    <a (click)="filter()">click to filter by: {{user.profession}}</a> |
+    <span> num of CV that sented:{{ numOfCV$ | async}}</span>|
+    <a [routerLink]="'FavoriteJobs'">my favorite jobs</a>
 </header>
 
 
 <!-- <app-login *ngIf="!userInLocalStorage"></app-login> -->
 
-<!-- <footer>
-    <h1>contact with manager:</h1>
-    <a href="mailto:tirza0556707982@gmail.com">tirza</a><br>
-    <a href="mailto:sh748168@gmail.com">shifra</a>
-</footer> -->

@@ -1,60 +1,314 @@
-scss
- form {
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+// Variables
+$primary-color: #ff6f61;
+$secondary-color: #f5a623;
+$background-color: #f0f4f8;
+$text-color: #333;
+$border-color: #e1e4e8;
+$button-color: #ff6f61;
+$button-hover-color: darken($button-color, 10%);
+$input-background-color: #fff;
+$input-border-color: #ccc;
+$input-focus-border-color: $primary-color;
+$font-family: 'Nunito', sans-serif;
+$heading-font-family: 'Nunito', sans-serif;
+
+// Mixins
+@mixin flex-center {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin transition($property, $duration: 0.3s) {
+    transition: $property $duration ease-in-out;
+}
+
+// Forms
+.filter-form {
+    margin-top: 5%;
+    background-color: #fff;
+    padding: 0.5rem 1rem;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     label {
         font-weight: bold;
         margin-bottom: 0.5rem;
+        color: #333;
     }
 
-    input {
+    input[type="text"],
+    select {
+        width: 150px;
         padding: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        width: 100%;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        font-size: 0.875rem;
+        @include transition(border-color);
+
+        &:focus {
+            border-color: $primary-color;
+            outline: none;
+            box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+        }
     }
 
-    button {
-        padding: 0.5rem 1rem;
-        background-color: #007bff;
+    button[type="submit"] {
+        background-color: $primary-color;
         color: #fff;
+        padding: 0.5rem 1rem;
         border: none;
-        border-radius: 4px;
+        border-radius: 8px;
         cursor: pointer;
+        font-size: 0.875rem;
+        font-family: Arial, sans-serif;
+        @include transition(background-color);
 
         &:hover {
-            background-color: #0056b3;
-        }
-
-        &:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
+            background-color: darken($primary-color, 10%);
         }
     }
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f8f9fa;
-    padding: 1rem;
-    border-bottom: 1px solid #ccc;
+body {
+    font-family: $font-family;
+    background-color: $background-color;
+    color: $text-color;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
 
-    span {
-        margin-right: 1rem;
+container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+// Job Item
+.job-item {
+    background-color: #fff;
+    padding: 1rem;
+    border: 1px solid $border-color;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+    margin-bottom: 1.5rem;
+
+    &:hover {
+        transform: scale(1.02);
     }
 
-    a {
-        text-decoration: none;
-        color: #007bff;
-        cursor: pointer;
+    h2 {
+        margin-top: 0;
+        color: #333;
+        font-size: 1.5rem;
+        font-family: Arial, sans-serif;
+    }
 
-        &:hover {
-            text-decoration: underline;
+    p {
+        margin: 0.5rem 0;
+        color: #666;
+    }
+
+    .job-info {
+        display: flex;
+        justify-content: space-between;
+        margin: 0.25rem 0;
+
+        .job-label {
+            font-weight: bold;
+            color: $primary-color;
+
+        }
+
+        .job-value {
+            color: #333;
+            font-family: fantasy;
+            font-size: larger;
         }
     }
+
+    .job-buttons {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            background-color: $primary-color;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-family: Arial, sans-serif;
+            @include transition(background-color);
+
+            &:hover {
+                background-color: darken($primary-color, 10%);
+            }
+        }
+    }
+}
+
+// Footer
+// Footer
+footer {
+    background-color: $primary-color;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+// Filter Buttons
+.filter-button {
+    background-color: $primary-color;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-family: Arial, sans-serif;
+    @include transition(background-color);
+
+    &:hover {
+        background-color: darken($primary-color, 10%);
+    }
+
+    &.active {
+        background-color: darken($primary-color, 10%);
+    }
+}
+
+header {
+    background-color: $primary-color;
+    color: #fff;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+// Login Form
+.login-form {
+
+    background-color: #fff;
+    padding: 1rem;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: 8%;
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        font-size: 0.875rem;
+        @include transition(border-color);
+
+        &:focus {
+            border-color: $primary-color;
+            outline: none;
+            box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+        }
+    }
+
+    select {
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        font-size: 0.875rem;
+        @include transition(border-color);
+    }
+
+    button[type="submit"] {
+        background-color: $primary-color;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.875rem;
+        font-family: Arial, sans-serif;
+        @include transition(background-color);
+
+        &:hover {
+            background-color: darken($primary-color, 10%);
+        }
+    }
+}
+
+// Favorite List
+.favorite-list {
+    background-color: #fff;
+    padding: 1rem;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 8rem;
+
+    .favorite-item {
+        padding: 0.5rem;
+        border-bottom: 1px solid $border-color;
+        font-size: 1rem;
+        color: #333;
+        @include transition(background-color);
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &:hover {
+            background-color: $primary-color ;
+        }
+    }
+}
+
+content {
+    padding-bottom: 250px;
+    /* גובה ה-FOOTER */
 }
