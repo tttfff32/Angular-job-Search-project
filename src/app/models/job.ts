@@ -9,10 +9,10 @@ export interface Job {
 }
 
 export enum profession {
-    Software_evelopment,
+    Software_development,
     Accounting,
-    architecture,
-    social_work,
-    secretariat,
-    graphics,
+    Architecture,
+   Social_work,
+    Secretariat,
+    Graphics,
 }

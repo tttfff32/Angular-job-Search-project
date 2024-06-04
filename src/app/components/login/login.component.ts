@@ -3,8 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 import { profession } from '../../models/job';
-
-import { RouterLink } from '@angular/router';
+import {Router} from '@angular/router'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,11 +11,11 @@ import { RouterLink } from '@angular/router';
 })
 export class LoginComponent {
   form: FormGroup
-  constructor(private userSRV: UserService) {
+  constructor(private userSRV: UserService,private router:Router) {
     this.form = new FormGroup(
       {
         username: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-        password: new FormControl('', Validators.minLength(4)),
+        password: new FormControl('', [Validators.minLength(4),Validators.required]),
         profession:new FormControl('', Validators.required)
       }
     )
@@ -34,7 +33,7 @@ export class LoginComponent {
         }
         else {
           this.user.profession = this.form.value.profession as profession;
-          localStorage.setItem("myUser", JSON.stringify(this.user));
+          this.userSRV.setLocalStorageItem("myUser", JSON.stringify(this.user));
           this.processLogin();
         }
       },
@@ -48,5 +47,6 @@ export class LoginComponent {
   processLogin() {
     this.userSRV.userInLocalStorage = true;
     alert('Login successful!!!✅');
+    this.router.navigate(['jobs']);
   }
 }

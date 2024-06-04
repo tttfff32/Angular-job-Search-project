@@ -12,11 +12,24 @@ export class JobComponent {
 constructor(private jobSRV:JobService, private router:Router){}
   @Input()
   job:Job={area:"",fromHome:false,hours:0,id:0,jobName:"",profession:profession.Accounting,requirements:""};
+  newJob:Job={area:"",fromHome:false,hours:0,id:0,jobName:"",profession:profession.Accounting,requirements:""};
   numOfCV:number=0;
+  isShowDetail:boolean=false;
+  btn:string="Show Details";
   addCV(){
     this.jobSRV.addCV();
-    // const numOfCVs = this.jobSRV.getNumOfCVs();
-    // this.router.navigate(['/main'], { queryParams: { numOfCVs: numOfCVs } });
+    this.newJob={area:this.job.area,fromHome:this.job.fromHome,hours:this.job.hours,id:this.job.id,jobName:this.job.jobName,profession:this.job.profession,requirements:this.job.requirements};
+  this.jobSRV.addJobToFavorite(this.newJob);
+  }
 
+  showDetails(){
+    if(this.btn=="Show Details"){
+      this.isShowDetail=true;
+      this.btn="Close Details"
+    }
+    else{
+      this.isShowDetail=false;
+      this.btn="Show Details"
+    }
   }
 }

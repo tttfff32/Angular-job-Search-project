@@ -4,6 +4,6 @@
 <p>{{job.hours}}</p>
 <p>{{job.fromHome}}</p>
 <p>{{job.area}}</p>
-<p>{{job.requirements}}</p>
-<!-- <button  (click)="">Show Details</button> -->
-<button  (click)="addCV()">Apply CV</button>
+<p *ngIf="isShowDetail"> requirements: {{job.requirements}}</p>
+<button  (click)="showDetails()">{{btn}}</button>
+<button  (click)="addCV()" >Apply CV</button>

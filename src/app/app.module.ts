@@ -11,6 +11,8 @@ import { JobComponent } from './components/job/job.component';
 import { JobListComponent } from './components/job-list/job-list.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms'
 import { Routes } from '@angular/router';
+import { FilterComponent } from './components/filter/filter.component';
+import { FavoriteJobsComponent } from './components/favorite-jobs/favorite-jobs.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { Routes } from '@angular/router';
     MainComponent,
     LoginComponent,
     JobComponent,
-    JobListComponent
+    JobListComponent,
+    FilterComponent,
+    FavoriteJobsComponent
   ],
   imports: [
     BrowserModule,

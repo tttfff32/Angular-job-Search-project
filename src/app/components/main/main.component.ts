@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private userSRV: UserService, private jobSRV: JobService, private router: ActivatedRoute) { }
+  constructor(private userSRV: UserService, private jobSRV: JobService, private router: Router) { }
   str: string | null = "" || null;
   user: User = { userName: "", password: "", id: 0, profession: profession.Accounting };
   userInLocalStorage: boolean = this.userSRV.userInLocalStorage
@@ -24,10 +24,14 @@ export class MainComponent implements OnInit {
   numOfCV$: Observable<number> | undefined;
   
   ngOnInit(): void {
-    this.str = localStorage.getItem('myUser') || null;
+   this.str=this.userSRV.getLocalStorageItem('myUser');
     if (this.str != null) {
       this.user = JSON.parse(this.str);
       this.userSRV.userInLocalStorage = true;
+      this.router.navigate(['jobs']);
+    }
+    else{
+      this.router.navigate(['Login']);
     }
     this.numOfCV$ = this.jobSRV.getNumOfCVs();
     // this.router.queryParams.subscribe(params => {
@@ -36,9 +40,6 @@ export class MainComponent implements OnInit {
   }
 
 filter(){
-  this.jobSRV.filterByProfession(this.user.profession).subscribe(res => this.jobSRV.updateJobList(res));
+  this.jobSRV.filterByProfessionInMain(this.user.profession).subscribe(res => this.jobSRV.updateJobList(res));
 }
-
-
-  
 }

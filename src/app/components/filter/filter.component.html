@@ -1,0 +1,21 @@
+
+<form [formGroup]="form">
+    <label for="profession">Profession:</label>
+    <select formControlName="profession" name="profession">
+        <option value="Software_Development">Software Development</option>
+        <option value="Accounting">Accounting</option>
+        <option value="Architecture">Architecture</option>
+        <option value="Social_work">Social work</option>
+        <option value="Graphics">Graphics</option>
+        <option value="Secretariat">Secretariat</option>
+    </select>
+
+  
+    <label for="area">Area:</label>
+    <input type="text" formControlName="area" name="area">
+  
+    <button (click)="filterJobs()">Filter</button>
+    <button (click)="resetFilter()">Reset</button>
+
+  </form>
+  
