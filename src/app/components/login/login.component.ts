@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 import { profession } from '../../models/job';
 import {Router} from '@angular/router'
+import { JobService } from '../../services/job.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +12,7 @@ import {Router} from '@angular/router'
 })
 export class LoginComponent {
   form: FormGroup
-  constructor(private userSRV: UserService,private router:Router) {
+  constructor(private userSRV: UserService,private router:Router,private jobSRV: JobService) {
     this.form = new FormGroup(
       {
         username: new FormControl('', [Validators.required, Validators.maxLength(10)]),
@@ -34,6 +35,7 @@ export class LoginComponent {
         else {
           this.user.profession = this.form.value.profession as profession;
           this.userSRV.setLocalStorageItem("myUser", JSON.stringify(this.user));
+          this.jobSRV.resetFavoriteJobs().subscribe( res=> this.jobSRV.FavoriteJobList=res);
           this.processLogin();
         }
       },

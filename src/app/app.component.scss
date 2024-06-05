@@ -42,6 +42,7 @@ $heading-font-family: 'Nunito', sans-serif;
         font-weight: bold;
         margin-bottom: 0.5rem;
         color: #333;
+        font-family: $font-family;
     }
 
     input[type="text"],
@@ -132,7 +133,7 @@ container {
         .job-label {
             font-weight: bold;
             color: $primary-color;
-
+            font-family: $font-family;
         }
 
         .job-value {
@@ -187,7 +188,7 @@ footer {
     border-radius: 8px;
     cursor: pointer;
     font-size: 0.875rem;
-    font-family: Arial, sans-serif;
+    font-family: $font-family;
     @include transition(background-color);
 
     &:hover {
@@ -207,12 +208,14 @@ header {
     text-align: center;
     font-size: 1.5rem;
     font-weight: bold;
+    font-family: $font-family;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 // Login Form
@@ -311,4 +314,17 @@ header {
 content {
     padding-bottom: 250px;
     /* גובה ה-FOOTER */
+}
+
+a {
+    text-decoration: none;
+    /* מסיר את הקו התחתון */
+    color: inherit;
+    /* משאיר את צבע הטקסט כמו של האלמנט ההורה */
+}
+
+a:hover {
+    color: #000;
+    /* לדוגמה, שחור או כל צבע אחר */
+
 }

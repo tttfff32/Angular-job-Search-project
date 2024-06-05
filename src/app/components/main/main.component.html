@@ -1,10 +1,11 @@
 <header>
-    <span>Hellow {{user.userName}} 🤗</span> |
+    |<span>Hellow {{user.userName}} 🤗</span> |
     <a [routerLink]="'main/'">דף הבית</a> |
 
     <a (click)="filter()">click to filter by: {{user.profession}}</a> |
+    <a [routerLink]="'FavoriteJobs'">my favorite jobs</a>|
+
     <span> num of CV that sented:{{ numOfCV$ | async}}</span>|
-    <a [routerLink]="'FavoriteJobs'">my favorite jobs</a>
 </header>
 
 

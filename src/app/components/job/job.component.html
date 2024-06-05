@@ -24,8 +24,9 @@
         <p class="job-value" *ngIf="isShowDetail"> {{job.requirements}}</p>
     </div>
     <div class="job-buttons">
-    <button (click)="showDetails()">{{btn}}</button><br>
-    <button (click)="addCV()">Apply CV</button>
+    <button (click)="showDetails()" >{{btn}}</button><br>
+    <button (click)="addCV()"*ngIf="!isCVSent">Apply CV</button>
+    <button (click)="addCV()" *ngIf="isCVSent" disabled="true">Apply CV</button>
     </div>
 </div>
 

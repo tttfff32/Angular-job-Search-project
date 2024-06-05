@@ -1,9 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
-import { Job, profession } from '../../models/job';
+import { profession } from '../../models/job';
 import { JobService } from '../../services/job.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 
@@ -20,7 +20,7 @@ export class MainComponent implements OnInit {
   userInLocalStorage: boolean = this.userSRV.userInLocalStorage
   filterData: any = { area: "", fromHome: false, hours: 0, id: 0, jobName: "", profession: profession.Accounting, requirements: "" };
 
-  // numOfCV: number =0;
+
   numOfCV$: Observable<number> | undefined;
   
   ngOnInit(): void {
@@ -34,9 +34,7 @@ export class MainComponent implements OnInit {
       this.router.navigate(['Login']);
     }
     this.numOfCV$ = this.jobSRV.getNumOfCVs();
-    // this.router.queryParams.subscribe(params => {
-    //   this.numOfCV = +params['numOfCVs'] || 0;
-    // });
+
   }
 
 filter(){

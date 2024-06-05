@@ -15,8 +15,10 @@ constructor(private jobSRV:JobService, private router:Router){}
   newJob:Job={area:"",fromHome:false,hours:0,id:0,jobName:"",profession:profession.Accounting,requirements:""};
   numOfCV:number=0;
   isShowDetail:boolean=false;
+  isCVSent:boolean=false;
   btn:string="Show Details";
   addCV(){
+    this.isCVSent=true;
     this.jobSRV.addCV();
     this.newJob={area:this.job.area,fromHome:this.job.fromHome,hours:this.job.hours,id:this.job.id,jobName:this.job.jobName,profession:this.job.profession,requirements:this.job.requirements};
     this.jobSRV.addJobToFavorite(this.newJob).subscribe

@@ -9,10 +9,13 @@ import { Job } from '../../models/job';
 })
 export class FavoriteJobsComponent implements OnInit{
   constructor(private jobSRV:JobService){}
-  FavoriteJobList:Job [] = [];
+  FavoriteJobList:Job []=[];
   ngOnInit(): void {
-    this.jobSRV.getFavoriteJobs().subscribe(res => this.FavoriteJobList = res)
+    this.jobSRV.FavoriteJobList$.subscribe(
+      (data: Job[]) => {
+        this.FavoriteJobList = data}
+    )
+    this.jobSRV.getFavoriteJobs().subscribe(res => this.jobSRV.updateFavoriteJobList(res))
+
   }
-
-
 }

@@ -19,11 +19,10 @@ export class JobService {
   private ListOfJobs = new BehaviorSubject<Job[]>([]);
   ListOfJobs$ = this.ListOfJobs.asObservable();
 
-
-  // private numOfCVSubject = new BehaviorSubject<number>(0);
-  // numOfCV$ = this.numOfCVSubject.asObservable();
   private numOfCVSubject: BehaviorSubject<number>;
 
+  FavoriteJobList= new BehaviorSubject<Job[]>([]);
+  FavoriteJobList$ = this.FavoriteJobList.asObservable();
 
 
   getJobs(): Observable<any> {
@@ -43,9 +42,6 @@ export class JobService {
   }
 
   addCV() {
-    // const currentNum = this.numOfCVSubject.value;
-    // this.numOfCVSubject.next(currentNum + 1);
-    // localStorage.setItem('numOfCV', currentNum.toString());
     const currentNumOfCV = this.numOfCVSubject.value + 1;
     this.numOfCVSubject.next(currentNumOfCV);
     this.setLocalStorageItem('numOfCV', currentNumOfCV.toString());
@@ -55,9 +51,6 @@ export class JobService {
     return this.http.post('https://localhost:7071/api/Job/AddJob', newjob);
  }
 
-  // getNumOfCVs(): number {
-  //   return this.numOfCVSubject.value;
-  // }
 
   getNumOfCVs(): Observable<number> {
     return this.numOfCVSubject.asObservable();
@@ -66,8 +59,13 @@ export class JobService {
   getFavoriteJobs():Observable<any>{
     return this.http.get<any>(`https://localhost:7071/api/Job/GetAllJobsCV`);
   }
+  resetFavoriteJobs():Observable<any>{
+    return this.http.get<any>(`https://localhost:7071/api/Job/ResetFavoriteJobs`);
+  }
 
-
+  updateFavoriteJobList(jobs: Job[]) {
+    this.FavoriteJobList.next(jobs);
+  }
 
   getLocalStorageItem(key: string): string | null {
     if (this.isLocalStorageAvailable()) {

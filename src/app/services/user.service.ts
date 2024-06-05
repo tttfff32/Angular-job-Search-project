@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
-import { profession } from '../models/job';
+import { Job, profession } from '../models/job';
 
 
 @Injectable({
@@ -20,6 +20,8 @@ export class UserService {
   checkUser(userName:string,password:string):Observable<any>{   
     return this.http.get(`https://localhost:7071/api/User/${userName}/${password}`);
 }
+
+
 
 getLocalStorageItem(key: string): string | null {
   if (this.isLocalStorageAvailable()) {
