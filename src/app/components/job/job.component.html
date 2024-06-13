@@ -25,7 +25,8 @@
     </div>
     <div class="job-buttons">
     <button (click)="showDetails()" >{{btn}}</button><br>
-    <button (click)="addCV()"*ngIf="!isCVSent">Apply CV</button>
+    <button  (click)="addCV()"*ngIf="!isCVSent">Apply CV</button>
+    <!-- <input type="file"  (click)="addCV()"*ngIf="!isCVSent" placeholder="Apply CV"> -->
     <button (click)="addCV()" *ngIf="isCVSent" disabled="true">Apply CV</button>
     </div>
 </div>
